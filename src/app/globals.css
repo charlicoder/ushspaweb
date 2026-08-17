@@ -5,6 +5,40 @@
 @import "tailwindcss";
 
 /* =========================================
+   Tailwind v4 Theme Tokens
+   ========================================= */
+
+@theme {
+  /* ---- Color Palette ---- */
+  /* Rose / blush tones */
+  --color-spa-rose:       #efa697;
+  --color-spa-petal:      #f5d5cf;
+  --color-spa-blush:      #fdf0ee;
+  --color-spa-cherry:     #b7605a;
+
+  /* Warm neutrals */
+  --color-spa-rosybrown:  #b7948e;
+
+  /* Backgrounds */
+  --color-spa-cream:      #fdf8f6;
+  --color-spa-pearl:      #f9f4f2;
+
+  /* Text */
+  --color-spa-text:       #283034;
+  --color-spa-muted:      #7a868c;
+
+  /* ---- Typography ---- */
+  --font-lustria:   'Lustria', serif;
+  --font-brush:     'Alex Brush', cursive;
+  --font-roboto:    'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* ---- Shadows ---- */
+  --shadow-spa:     0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-spa-md:  0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-spa-lg:  0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================
    Base Styles
    ========================================= */
 
@@ -19,6 +53,7 @@ body {
   color: #283034;
   font-weight: 300;
   overflow-x: hidden;
+  background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -411,4 +446,11 @@ ul {
 
 .scroll-to-top:hover {
   background-color: rgba(183, 148, 142, 0.9);
+}
+
+/* =========================================
+   Transition duration utilities (Tailwind v4 override)
+   ========================================= */
+.duration-400 {
+  transition-duration: 400ms;
 }
