@@ -44,20 +44,12 @@ export default function Header() {
                     onClick={(e) => { e.preventDefault(); handleNavClick('#hero'); }}
                     className="flex items-center gap-2 group"
                 >
-                    <div className="flex flex-col leading-none">
-                        <span
-                            className={`font-lustria text-2xl font-bold tracking-widest transition-colors duration-300 ${scrolled ? 'text-spa-cherry' : 'text-white'
-                                }`}
-                        >
-                            USH
-                        </span>
-                        <span
-                            className={`font-brush text-xl tracking-wider transition-colors duration-300 ${scrolled ? 'text-spa-rose' : 'text-spa-petal'
-                                }`}
-                        >
-                            Spa
-                        </span>
-                    </div>
+                    <img
+                        src={scrolled ? '/images/logo-01.png' : '/images/logo-white.png'}
+                        alt="USH Spa Logo"
+                        style={{ height: '52px', width: 'auto', display: 'block' }}
+                        className="transition-all duration-300"
+                    />
                 </a>
 
                 {/* Desktop Nav */}
@@ -67,8 +59,8 @@ export default function Header() {
                             key={item.label}
                             href={item.href}
                             onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                            className={`text-sm font-medium uppercase tracking-wider px-3 py-2 transition-colors duration-300 hover:text-spa-rose ${scrolled ? 'text-spa-text' : 'text-white'
-                                }`}
+                            className="text-sm font-medium uppercase tracking-wider px-3 py-2 transition-colors duration-300 hover:text-spa-rose"
+                            style={{ color: scrolled ? '' : '#ffffff' }}
                         >
                             {item.label}
                         </a>

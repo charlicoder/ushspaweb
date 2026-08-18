@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import './flaticon.css';
 
 @import "tailwindcss";
 
@@ -88,6 +89,26 @@ ul {
   text-align: center;
   position: relative;
 }
+
+/* =========================================
+   Flaticon Size Overrides
+   Allow font-size on parent to control icon glyph size
+   ========================================= */
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+  font-size: inherit !important;
+}
+
+/* Icon container sizes — number = icon glyph px */
+.ico-50  { font-size: 50px; }
+.ico-60  { font-size: 60px; }
+.ico-70  { font-size: 70px; }
+.ico-80  { font-size: 80px; }
+.ico-90  { font-size: 90px; }
+.ico-100 { font-size: 100px; }
 
 .section-id {
   font-family: 'Alex Brush', cursive;

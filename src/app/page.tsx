@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import WelcomeSection from '@/components/WelcomeSection';
 import AboutSection from '@/components/AboutSection';
+import ExperienceSection from '@/components/ExperienceSection';
 import BannerSection from '@/components/BannerSection';
 import GallerySection from '@/components/GallerySection';
 import GiftCardsSection from '@/components/GiftCardsSection';
@@ -30,18 +31,21 @@ export default function HomePage() {
       {/* 2. Welcome / Services Intro */}
       <WelcomeSection />
 
-      {/* 3. About Section (2 parts) */}
+      {/* 3. About Section */}
       <AboutSection />
 
+      {/* 3b. Experience Section */}
+      <ExperienceSection />
+
       {/* 4. Banner - First Discount */}
-      <BannerSection
+      {/* <BannerSection
         discount="25% OFF"
         title="For All Spa Procedures"
         subtitle="This month only — treat yourself or someone special to the ultimate spa experience."
         ctaText="Book Now"
         ctaHref="#booking"
         bgColor="bg-spa-rose"
-      />
+      /> */}
 
       {/* 5. Gallery Section */}
       <GallerySection />

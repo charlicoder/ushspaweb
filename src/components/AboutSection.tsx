@@ -8,110 +8,75 @@ export default function AboutSection() {
 
     return (
         <>
-            {/* About Part 1 - Image + Text */}
-            <section id="about" className="py-24 bg-spa-pearl">
-                <div className="max-w-6xl mx-auto px-4">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        {/* Image */}
-                        <div className="relative">
-                            <div className="relative overflow-hidden rounded-sm shadow-spa-lg">
-                                <img
-                                    src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=700&q=80"
-                                    alt="USH Spa luxury treatment room with candles and relaxing ambiance"
-                                    className="w-full h-[500px] object-cover" />
-
-                            </div>
-                            {/* Decorative badge */}
-                            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-spa-rose rounded-full flex flex-col items-center justify-center text-white shadow-spa-md">
-                                <span className="font-lustria text-2xl font-bold">10+</span>
-                                <span className="text-xs text-center leading-tight">Years of Excellence</span>
-                            </div>
+            {/* ── About Banner ── */}
+            <section
+                id="about"
+                style={{ backgroundColor: '#f7f4f0', overflow: 'visible', position: 'relative', zIndex: 1 }}
+            >
+                <div className="max-w-7xl mx-auto" style={{ overflow: 'visible' }}>
+                    <div
+                        className="grid lg:grid-cols-[55%_45%] items-center"
+                        style={{ minHeight: '380px', overflow: 'visible' }}
+                    >
+                        {/* ── Left: Image — overflows top and bottom of section boundary ── */}
+                        <div
+                            style={{
+                                position: 'relative',
+                                marginTop: '-80px',
+                                marginBottom: '-80px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <img
+                                src="/images/image-03.png"
+                                alt="USH Spa beauty products — himalayan salt bowl, white towels and floral decor"
+                                style={{
+                                    width: '100%',
+                                    height: '560px',
+                                    objectFit: 'contain',
+                                    objectPosition: 'center',
+                                    display: 'block',
+                                }}
+                            />
                         </div>
 
-                        {/* Text */}
-                        <div className="lg:pl-8">
-                            <span className="section-id text-spa-rose">About Us</span>
-                            <h3 className="font-lustria text-3xl md:text-4xl text-spa-text mb-6 leading-tight">
-                                Your Beauty &amp; Wellness Journey Starts Here
-                            </h3>
-                            <p className="text-spa-muted leading-relaxed mb-6">
-                                USH Spa is a premier wellness destination dedicated to providing transformative spa
-                                experiences. Our team of certified therapists and beauty experts are passionate about
-                                helping you look and feel your absolute best.
+                        {/* ── Right: Text ── */}
+                        <div className="py-16 pr-12 pl-6 lg:pl-4">
+                            <h2
+                                className="font-lustria leading-snug mb-5"
+                                style={{
+                                    fontSize: '2.1rem',
+                                    fontWeight: 700,
+                                    color: '#727475',
+                                    letterSpacing: '0.3px',
+                                }}
+                            >
+                                Your Beauty And<br />Success Starts Here
+                            </h2>
+
+                            <p
+                                className="text-spa-muted leading-relaxed mb-8"
+                                style={{ fontSize: '0.92rem', maxWidth: '440px' }}
+                            >
+                                Porta semper lacus cursus, feugiat primis ultrce ligula risus auctor an
+                                tempus feugiat dolor undo lacinia cubilia curae integer orci congue and
+                                metus mollis lorem
                             </p>
-                            <p className="text-spa-muted leading-relaxed mb-8">
-                                We combine ancient healing traditions with modern techniques, using only the finest
-                                organic and natural products to deliver results that go beyond the surface.
-                            </p>
+
                             <button
                                 onClick={() => handleScroll('#services')}
-                                className="btn-spa btn-rosybrown">
-
-                                Discover More
+                                className="btn-spa btn-rose"
+                                style={{ fontSize: '0.82rem', padding: '11px 32px', letterSpacing: '0.5px' }}
+                            >
+                                Read More
                             </button>
                         </div>
+
                     </div>
                 </div>
             </section>
-
-            {/* About Part 2 - Experience Features */}
-            <section className="py-24 bg-white">
-                <div className="max-w-6xl mx-auto px-4">
-                    <div className="grid lg:grid-cols-3 gap-12 items-start">
-                        {/* Left: Title */}
-                        <div>
-                            <span className="section-id text-spa-rose">Experience</span>
-                            <h3 className="font-lustria text-3xl md:text-4xl text-spa-text mb-6 leading-tight">
-                                Feel Natural, Be Natural
-                            </h3>
-                            <p className="text-spa-muted leading-relaxed">
-                                We believe wellness is a lifestyle. Our holistic approach ensures every treatment
-                                nurtures your body, mind, and spirit in perfect harmony.
-                            </p>
-                        </div>
-
-                        {/* Center: Image */}
-                        <div className="relative">
-                            <img
-                                src="https://img.rocket.new/generatedImages/rocket_gen_img_1412db922-1772488337954.png"
-                                alt="Spa therapist performing a relaxing aromatherapy treatment"
-                                className="w-full h-80 object-cover rounded-sm shadow-spa" />
-
-                        </div>
-
-                        {/* Right: Feature list */}
-                        <div className="flex flex-col gap-8">
-                            {[
-                                {
-                                    icon: '🏥',
-                                    title: 'Safety Standards',
-                                    desc: 'We maintain the highest hygiene and safety protocols, ensuring a clean, safe, and comfortable environment for every client.'
-                                },
-                                {
-                                    icon: '🌺',
-                                    title: 'Lifestyle Program',
-                                    desc: 'Our wellness programs are designed to complement your lifestyle, offering ongoing support for your health and beauty goals.'
-                                },
-                                {
-                                    icon: '🎁',
-                                    title: 'Gift Cards',
-                                    desc: 'Share the gift of relaxation with our beautifully presented gift cards — perfect for any occasion or celebration.'
-                                }].
-                                map((feature) =>
-                                    <div key={feature.title} className="flex gap-4">
-                                        <div className="flex-shrink-0 w-12 h-12 bg-spa-blush rounded-full flex items-center justify-center text-xl">
-                                            {feature.icon}
-                                        </div>
-                                        <div>
-                                            <h5 className="font-lustria text-base text-spa-text mb-2">{feature.title}</h5>
-                                            <p className="text-spa-muted text-sm leading-relaxed">{feature.desc}</p>
-                                        </div>
-                                    </div>
-                                )}
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>);
-
+        </>
+    );
 }
