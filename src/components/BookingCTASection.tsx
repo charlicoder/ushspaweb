@@ -17,7 +17,7 @@ export default function BookingCTASection() {
 
                 {/* ── Left: Cream panel with botanical watermark ── */}
                 <div
-                    className="relative flex items-center overflow-hidden"
+                    className="relative flex items-center justify-end overflow-hidden"
                     style={{ backgroundColor: '#faf7f4' }}
                 >
                     {/* Subtle botanical watermark */}
