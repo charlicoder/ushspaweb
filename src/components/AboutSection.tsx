@@ -11,7 +11,7 @@ export default function AboutSection() {
             {/* ── About Banner ── */}
             <section
                 id="about"
-                style={{ backgroundColor: '#f7f4f0', overflow: 'visible', position: 'relative', zIndex: 1 }}
+                style={{ backgroundColor: '#ece9e5', overflow: 'visible', position: 'relative', zIndex: 1 }}
             >
                 <div className="max-w-7xl mx-auto" style={{ overflow: 'visible' }}>
                     <div
