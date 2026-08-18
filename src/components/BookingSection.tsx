@@ -7,9 +7,6 @@ export default function BookingSection() {
         name: '',
         email: '',
         phone: '',
-        service: '',
-        date: '',
-        time: '',
         message: '',
     });
     const [submitted, setSubmitted] = useState(false);
@@ -24,7 +21,7 @@ export default function BookingSection() {
     };
 
     return (
-        <section id="booking" className="py-24 bg-spa-petal">
+        <section id="booking" className="py-24" style={{ backgroundColor: '#fdf8f6' }}>
             {/* Also serves as contact section */}
             <div id="contact" className="max-w-6xl mx-auto px-4">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -55,10 +52,15 @@ export default function BookingSection() {
                                     App Store
                                 </a>
                                 <a
-                                    href="#"
+                                    href="https://play.google.com/store/apps/details?id=com.spaush.ushspa"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="flex items-center gap-2 bg-spa-text text-white px-4 py-2.5 rounded-sm hover:bg-spa-cherry transition-colors duration-300 text-sm font-medium"
                                 >
-                                    <span className="text-lg">🌐</span>
+                                    {/* Google Play SVG icon */}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                        <path d="M3.18 23.76c.3.17.64.24.99.2l12.37-11.88L13.48 9 3.18 23.76zM21.37 10.6l-2.79-1.6-3.44 3.31 3.44 3.3 2.8-1.6c.8-.46.8-1.95 0-2.41zM1.96.48C1.65.85 1.5 1.36 1.5 1.98v20.04c0 .62.15 1.13.47 1.5L13.06 12 1.96.48zM16.54 1.64 4.17.24c-.35-.04-.69.03-.99.2L13.48 9l3.06-7.36z"/>
+                                    </svg>
                                     Google Play
                                 </a>
                             </div>
@@ -68,15 +70,16 @@ export default function BookingSection() {
                         <div className="flex flex-col gap-3">
                             <div className="flex items-center gap-3 text-spa-muted">
                                 <span className="text-spa-rose text-lg">📞</span>
-                                <span>+1 (555) 123-4567</span>
+                                <span>+965 900103335</span>
                             </div>
                             <div className="flex items-center gap-3 text-spa-muted">
                                 <span className="text-spa-rose text-lg">✉️</span>
-                                <span>hello@ushspa.com</span>
+                                <span>info@ushspa.co</span>
                             </div>
                             <div className="flex items-center gap-3 text-spa-muted">
                                 <span className="text-spa-rose text-lg">📍</span>
-                                <span>123 Wellness Boulevard, Suite 100, Beverly Hills, CA 90210</span>
+                                <span>Building 124 floor 5 office 10</span>
+                                <span>USH SPA - Mangaf</span>
                             </div>
                         </div>
                     </div>
@@ -114,86 +117,31 @@ export default function BookingSection() {
                                             className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
                                         />
                                     </div>
-                                    <div>
-                                        <label className="block text-spa-muted text-sm mb-1.5">Email *</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            required
-                                            placeholder="your@email.com"
-                                            className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
-                                        />
+                                     <div>
+                                         <label className="block text-spa-muted text-sm mb-1.5">Email</label>
+                                         <input
+                                             type="email"
+                                             name="email"
+                                             value={formData.email}
+                                             onChange={handleChange}
+                                             placeholder="your@email.com"
+                                             className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
+                                         />
                                     </div>
                                 </div>
 
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-spa-muted text-sm mb-1.5">Phone</label>
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            placeholder="+1 (555) 000-0000"
-                                            className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-spa-muted text-sm mb-1.5">Service *</label>
-                                        <select
-                                            name="service"
-                                            value={formData.service}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
-                                        >
-                                            <option value="">Select a service</option>
-                                            <option value="swedish">Swedish Massage</option>
-                                            <option value="deep-tissue">Deep Tissue Massage</option>
-                                            <option value="hot-stone">Hot Stone Massage</option>
-                                            <option value="combination">Combination Massage</option>
-                                            <option value="facial">Facial Treatment</option>
-                                            <option value="aromatherapy">Aromatherapy</option>
-                                            <option value="body-wrap">Body Wrap</option>
-                                            <option value="package">Spa Package</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-spa-muted text-sm mb-1.5">Preferred Date *</label>
-                                        <input
-                                            type="date"
-                                            name="date"
-                                            value={formData.date}
-                                            onChange={handleChange}
-                                            required
-                                            className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-spa-muted text-sm mb-1.5">Preferred Time</label>
-                                        <select
-                                            name="time"
-                                            value={formData.time}
-                                            onChange={handleChange}
-                                            className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
-                                        >
-                                            <option value="">Select time</option>
-                                            <option value="9:00">9:00 AM</option>
-                                            <option value="10:00">10:00 AM</option>
-                                            <option value="11:00">11:00 AM</option>
-                                            <option value="12:00">12:00 PM</option>
-                                            <option value="13:00">1:00 PM</option>
-                                            <option value="14:00">2:00 PM</option>
-                                            <option value="15:00">3:00 PM</option>
-                                            <option value="16:00">4:00 PM</option>
-                                            <option value="17:00">5:00 PM</option>
-                                        </select>
-                                    </div>
+                                {/* Phone/WhatsApp — required */}
+                                <div>
+                                    <label className="block text-spa-muted text-sm mb-1.5">Phone / WhatsApp *</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="+965 XXXX XXXX"
+                                        className="w-full h-12 px-4 border border-spa-petal rounded-sm text-spa-text text-sm focus:outline-none focus:border-spa-rose transition-colors duration-300 bg-white"
+                                    />
                                 </div>
 
                                 <div>

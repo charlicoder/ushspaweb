@@ -7,42 +7,92 @@ export default function BookingCTASection() {
     };
 
     return (
-        <section className="py-20 bg-spa-petal">
-            <div className="max-w-6xl mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* Left: Text */}
-                    <div>
-                        <h3 className="font-lustria text-3xl md:text-4xl text-spa-text mb-6 leading-tight">
-                            Want to Make a Booking or Have a Question?
-                        </h3>
-                        <p className="text-spa-muted leading-relaxed mb-8">
-                            Call us:{' '}
-                            <a
-                                href="tel:+15551234567"
-                                className="text-spa-rose font-medium hover:text-spa-cherry transition-colors duration-300">
+        <section
+            id="booking-cta"
+            className="overflow-hidden"
+            style={{ minHeight: '420px' }}
+        >
+            {/* Full-width 50/50 split — no container, image bleeds to right edge */}
+            <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: '420px' }}>
 
-                                +1 (555) 123-4567
+                {/* ── Left: Cream panel with botanical watermark ── */}
+                <div
+                    className="relative flex items-center overflow-hidden"
+                    style={{ backgroundColor: '#faf7f4' }}
+                >
+                    {/* Subtle botanical watermark */}
+                    <div
+                        aria-hidden="true"
+                        className="absolute inset-0 pointer-events-none select-none"
+                        style={{
+                            backgroundImage: `url('/images/sbox-bg-pink.png')`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center right',
+                            backgroundSize: 'contain',
+                            opacity: 0.35,
+                        }}
+                    />
+
+                    {/* Text content */}
+                    <div className="relative z-10 px-12 py-16 max-w-lg">
+                        <h2
+                            className="font-lustria leading-snug mb-6"
+                            style={{
+                                fontSize: '2.35rem',
+                                fontWeight: 700,
+                                color: '#727475',
+                                letterSpacing: '0.3px',
+                                lineHeight: 1.25,
+                            }}
+                        >
+                            Want to Make a<br />
+                            Booking or Have a<br />
+                            Question?
+                        </h2>
+
+                        <p
+                            className="text-spa-muted mb-8 leading-relaxed"
+                            style={{ fontSize: '0.92rem', maxWidth: '380px' }}
+                        >
+                            Call us :{' '}
+                            <a
+                                href="tel:+1298765432"
+                                className="font-bold hover:text-spa-rose transition-colors duration-300"
+                                style={{ color: '#4a4a4a', fontWeight: 700 }}
+                            >
+                                +12 9 8765 4321
                             </a>{' '}
-                            or fill out our online booking form and we will contact you within 24 hours.
+                            or fill out our online booking &amp; enquiry form and we will contact you
                         </p>
+
                         <button
                             onClick={() => handleScroll('#booking')}
-                            className="btn-spa btn-rose text-base px-8 py-4">
-
+                            className="btn-spa btn-rose"
+                            style={{ fontSize: '0.82rem', padding: '11px 30px', letterSpacing: '0.5px' }}
+                        >
                             Make an Appointment
                         </button>
                     </div>
-
-                    {/* Right: Image */}
-                    <div className="relative">
-                        <img
-                            src="https://img.rocket.new/generatedImages/rocket_gen_img_19330abe5-1772905195171.png"
-                            alt="Welcoming spa reception desk with fresh flowers and warm lighting"
-                            className="w-full h-80 object-cover rounded-sm shadow-spa-lg" />
-
-                    </div>
                 </div>
-            </div>
-        </section>);
 
+                {/* ── Right: Spa facial image — fills full height, no padding ── */}
+                <div className="relative overflow-hidden" style={{ minHeight: '420px' }}>
+                    <img
+                        src="/images/image-04.jpg"
+                        alt="Client receiving a relaxing facial spa treatment"
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center top',
+                            display: 'block',
+                            position: 'absolute',
+                            inset: 0,
+                        }}
+                    />
+                </div>
+
+            </div>
+        </section>
+    );
 }

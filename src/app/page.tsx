@@ -63,14 +63,14 @@ export default function HomePage() {
       <PricingSection />
 
       {/* 10. Banner - Second Discount */}
-      <BannerSection
+      {/* <BannerSection
         discount="50% OFF"
         title="Aroma & Jet Hydrotherapy!"
         subtitle="Limited time offer for new clients. Experience our signature hydrotherapy treatment at half price."
         ctaText="Find Out More"
         ctaHref="#services"
         bgImage="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80"
-      />
+      /> */}
 
       {/* 11. Team Section */}
       <TeamSection />
@@ -82,17 +82,17 @@ export default function HomePage() {
       <TestimonialsSection />
 
       {/* 14. Banner - Third Discount */}
-      <BannerSection
+      {/* <BannerSection
         discount="20% OFF"
         title="For Your First Visit"
         subtitle="New to USH Spa? Enjoy 20% off your first treatment when you book through our mobile app."
         ctaText="Book Now"
         ctaHref="#booking"
         bgColor="bg-spa-rosybrown"
-      />
+      /> */}
 
       {/* 15. Packages Section */}
-      <PackagesSection />
+      {/* <PackagesSection /> */}
 
       {/* 16. Blog Section */}
       <BlogSection />
@@ -101,7 +101,7 @@ export default function HomePage() {
       <BookingSection />
 
       {/* 18. Footer CTA */}
-      <FooterCTASection />
+      {/* <FooterCTASection /> */}
 
       {/* 19. Footer */}
       <Footer />

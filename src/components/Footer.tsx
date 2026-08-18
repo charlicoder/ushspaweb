@@ -42,20 +42,20 @@ export default function Footer() {
                     {/* Contact */}
                     <div>
                         <h6 className="font-lustria text-base mb-6 text-white">Let&apos;s Talk</h6>
-                        <div className="flex flex-col gap-2 text-white/60 text-sm">
-                            <p>123 Wellness Boulevard, Suite 100</p>
-                            <p>Beverly Hills, CA 90210</p>
+                        <div className="flex flex-col gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                            <p>Building 124 floor 5 office 10</p>
+                            <p>USH SPA - Mangaf</p>
                             <div className="mt-2 flex flex-col gap-1">
                                 <p>
                                     E:{' '}
-                                    <a href="mailto:hello@ushspa.com" className="text-spa-rose hover:text-spa-petal transition-colors duration-300">
-                                        hello@ushspa.com
+                                    <a href="mailto:info@ushspa.co" style={{ color: '#efa697' }} className="hover:opacity-80 transition-opacity duration-300">
+                                        info@ushspa.co
                                     </a>
                                 </p>
-                                <p>Phone: +1 (555) 123-4567</p>
+                                <p>Phone: +965 90010335</p>
                                 <p>
                                     Instagram:{' '}
-                                    <a href="#" className="text-spa-rose hover:text-spa-petal transition-colors duration-300">
+                                    <a href="#" style={{ color: '#efa697' }} className="hover:opacity-80 transition-opacity duration-300">
                                         @ushspa
                                     </a>
                                 </p>
@@ -72,8 +72,9 @@ export default function Footer() {
                                     <a
                                         href={link.href}
                                         onClick={(e) => { e.preventDefault(); handleScroll(link.href); }}
-                                        className="text-white/60 text-sm hover:text-spa-rose transition-colors duration-300">
-
+                                        className="text-sm transition-opacity duration-300 hover:opacity-70"
+                                        style={{ color: '#ffffff' }}
+                                    >
                                         {link.label}
                                     </a>
                                 </li>
