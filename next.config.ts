@@ -24,8 +24,8 @@ const nextConfig: NextConfig = {
         // origin (e.g. during staging or behind a CDN in production).
         source: '/api/:path*',
         headers: [
-          { key: 'Access-Control-Allow-Origin',  value: 'https://apidev.ushspa.co' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, OPTIONS'       },
+          { key: 'Access-Control-Allow-Origin', value: 'https://apidev.ushspa.co' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
         ],
       },
@@ -35,11 +35,13 @@ const nextConfig: NextConfig = {
   // Prevent Next.js CSRF check from rejecting server-side requests that
   // originate from the production API domain or a CDN / reverse proxy.
   // See: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions#allowedorigins
-  serverActions: {
-    allowedOrigins: [
-      'apidev.ushspa.co',
-      'www.apidev.ushspa.co',
-    ],
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "apidev.ushspa.co",
+        "www.apidev.ushspa.co",
+      ],
+    },
   },
 };
 
