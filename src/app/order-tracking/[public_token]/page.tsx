@@ -59,47 +59,62 @@ interface OrderData {
 
 function statusConfig(status: string | undefined, label?: string) {
   const s = (status ?? '').toLowerCase();
-  if (
-    s.includes('delivered') ||
-    s.includes('received') ||
-    s.includes('completed')
-  ) {
+  // received (customer confirmed)
+  if (s === 'received' || s.includes('received')) {
     return {
-      label: label || 'Delivered',
+      label: label || 'Received',
       color: '#16a34a',
       bg: '#dcfce7',
       borderColor: '#86efac',
       icon: '✓',
     };
   }
+  // delivered by staff
+  if (s === 'delivered' || s.includes('delivered') || s.includes('completed')) {
+    return {
+      label: label || 'Delivered',
+      color: '#059669',
+      bg: '#d1fae5',
+      borderColor: '#6ee7b7',
+      icon: '📬',
+    };
+  }
+  // on_the_way / in transit
   if (
+    s === 'on_the_way' ||
+    s.includes('on_the_way') ||
+    s.includes('on the way') ||
     s.includes('transit') ||
     s.includes('shipped') ||
-    s.includes('on the way') ||
     s.includes('out_for_delivery')
   ) {
     return {
-      label: label || 'In Transit',
+      label: label || 'On The Way',
       color: '#d97706',
       bg: '#fef3c7',
       borderColor: '#fcd34d',
       icon: '🚚',
     };
   }
+  // ready_to_go
   if (
+    s === 'ready_to_go' ||
+    s.includes('ready_to_go') ||
+    s.includes('ready to go') ||
     s.includes('processing') ||
     s.includes('preparing') ||
     s.includes('confirmed')
   ) {
     return {
-      label: label || 'Processing',
+      label: label || 'Ready To Go',
       color: '#2563eb',
       bg: '#dbeafe',
       borderColor: '#93c5fd',
-      icon: '⏳',
+      icon: '📦',
     };
   }
-  if (s.includes('ordered') || s.includes('pending') || s.includes('placed')) {
+  // ordered / pending
+  if (s === 'ordered' || s.includes('ordered') || s.includes('pending') || s.includes('placed')) {
     return {
       label: label || 'Ordered',
       color: '#7c3aed',
@@ -169,9 +184,11 @@ export default function OrderTrackingPage({
       try {
         setLoading(true);
         setError(null);
-        // Relative URL routes to Next.js API proxy, resolving all browser CORS restrictions
+        // cache: 'no-store' ensures each page load/refresh sends a fresh request
+        // and bypasses both browser and Next.js data caches
         const res = await fetch(
-          `/api/track/${encodeURIComponent(public_token)}`
+          `/api/track/${encodeURIComponent(public_token)}`,
+          { cache: 'no-store' }
         );
         const data = await res.json().catch(() => ({}));
 
@@ -291,9 +308,10 @@ export default function OrderTrackingPage({
     }
   }
 
-  const isDelivered =
-    (rawStatus ?? '').toLowerCase().includes('delivered') ||
-    (rawStatus ?? '').toLowerCase().includes('received');
+  // True only when the customer has confirmed receipt (status = received)
+  const isReceived = (rawStatus ?? '') === 'received' || (rawStatus ?? '').toLowerCase() === 'received';
+  // True when staff marked delivered but customer hasn't confirmed yet
+  const canConfirmReceived = (rawStatus ?? '') === 'delivered' || (rawStatus ?? '').toLowerCase() === 'delivered';
 
   /* ────────────────────────── Render ────────────────────────── */
   return (
@@ -743,7 +761,8 @@ export default function OrderTrackingPage({
                   alignItems: 'center',
                 }}
               >
-                {isDelivered ? (
+                {isReceived ? (
+                  /* ── Customer already confirmed receipt ── */
                   <div
                     style={{
                       display: 'inline-flex',
@@ -760,7 +779,8 @@ export default function OrderTrackingPage({
                   >
                     <span>✓</span> Order Marked as Received
                   </div>
-                ) : (
+                ) : canConfirmReceived ? (
+                  /* ── Delivered by staff — customer can now confirm ── */
                   <>
                     <button
                       id="mark-received-btn"
@@ -800,13 +820,13 @@ export default function OrderTrackingPage({
                       }}
                     >
                       <span style={{ fontSize: '1.2rem' }}>✓</span>
-                      Received Order
+                      Confirm Receipt
                     </button>
                     <p style={{ marginTop: '12px', fontSize: '0.82rem', color: '#b7948e' }}>
-                      Click to enter your tracking code and confirm package receipt
+                      Your order has been delivered! Click to confirm receipt with your tracking code.
                     </p>
                   </>
-                )}
+                ) : null /* Order not yet delivered — hide action area */}
               </div>
 
             </div>
@@ -1123,30 +1143,39 @@ function DetailRow({
 }
 
 const STEPS = [
-  { key: 'ordered', label: 'Ordered', icon: '📋' },
-  { key: 'processing', label: 'Processing', icon: '⏳' },
-  { key: 'transit', label: 'In Transit', icon: '🚚' },
-  { key: 'delivered', label: 'Delivered', icon: '✓' },
+  { key: 'ordered',     label: 'Ordered',     icon: '📋' },
+  { key: 'ready_to_go', label: 'Ready To Go', icon: '📦' },
+  { key: 'on_the_way',  label: 'On The Way',  icon: '🚚' },
+  { key: 'delivered',   label: 'Delivered',   icon: '📬' },
+  { key: 'received',    label: 'Received',    icon: '✓'  },
 ];
 
 function DeliveryProgress({ status }: { status: string | undefined }) {
   const s = (status ?? '').toLowerCase();
 
-  let activeStep = 0;
-  if (s.includes('processing') || s.includes('confirmed') || s.includes('preparing')) {
+  let activeStep = 0; // ordered
+  if (
+    s === 'ready_to_go' ||
+    s.includes('ready_to_go') ||
+    s.includes('ready to go') ||
+    s.includes('processing') ||
+    s.includes('preparing') ||
+    s.includes('confirmed')
+  ) {
     activeStep = 1;
   } else if (
+    s === 'on_the_way' ||
+    s.includes('on_the_way') ||
+    s.includes('on the way') ||
     s.includes('transit') ||
     s.includes('shipped') ||
     s.includes('out_for_delivery')
   ) {
     activeStep = 2;
-  } else if (
-    s.includes('delivered') ||
-    s.includes('received') ||
-    s.includes('completed')
-  ) {
+  } else if (s === 'delivered' || (s.includes('delivered') && !s.includes('received'))) {
     activeStep = 3;
+  } else if (s === 'received' || s.includes('received') || s.includes('completed')) {
+    activeStep = 4;
   }
 
   return (
